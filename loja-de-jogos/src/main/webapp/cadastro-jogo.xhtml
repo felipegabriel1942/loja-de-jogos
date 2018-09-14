@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Cadastro de jogos</title>
+
+</h:head>
+<h:body>
+
+	<h:form>
+	
+		<!-- PAINEL DE CADASTRO -->
+		<p:growl id="mensagemSucesso" showDetail="true" sticky="true"/>
+		<h:panelGrid columns="2" id="gridCadastro">
+		
+			<f:facet name="header">Cadastro de Jogos</f:facet>
+			
+			<p:outputLabel for="nomeJogo" value="Nome do Jogo: " />
+			<p:inputText id="nomeJogo" value="#{jogoBean.jogo.nomeJogo}" />
+			<p:outputLabel for="generoJogo" value="Genêro do Jogo: " />
+			<p:inputText id="generoJogo" value="#{jogoBean.jogo.generoJogo}" />
+			<p:outputLabel for="valorJogo" value="Valor do Jogo: " />
+			<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}" />
+			<p:commandButton value="Gravar" actionListener="#{jogoBean.salvarJogo}" update="tb_jogos gridCadastro mensagemSucesso"/>
+		</h:panelGrid>
+		
+		<p:dataTable var="jogo" value="#{jogoBean.listaJogos}" id="tb_jogos">
+		<f:facet name="header">Jogos Cadastrados</f:facet>
+			<p:column headerText="Nome do Jogo">
+				<h:outputText value="#{jogo.nomeJogo}" />
+			</p:column>
+			
+			<p:column headerText="Genêro do Jogo">
+				<h:outputText value="#{jogo.generoJogo}" />
+			</p:column>
+			
+			<p:column headerText="Valor do Jogo">
+				<h:outputText value="#{jogo.valorJogo}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
