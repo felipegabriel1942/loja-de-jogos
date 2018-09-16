@@ -1,6 +1,7 @@
 package br.com.lojajogos.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,7 +14,7 @@ public class Jogo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@SequenceGenerator(name = "jogoGenerator", sequenceName = "JOGO_SEQ", allocationSize = 10)
+	@SequenceGenerator(name = "jogoGenerator", sequenceName = "JOGO_SEQ", allocationSize = 1)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "jogoGenerator")
 	@Column(name = "pk_jogo", nullable = false, columnDefinition = "serial")
@@ -35,6 +36,12 @@ public class Jogo implements Serializable {
 	@Getter
 	@Setter
 	private float valorJogo;
+	
+	@ManyToMany(mappedBy="jogos")
+	@Getter
+	@Setter
+	private List<Venda> vendas;
+	
 
 	public Jogo() {
 

@@ -8,6 +8,8 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>br.com.lojajogos.model.Jogo</class>
+		<class>br.com.lojajogos.model.Venda</class>
+		<class>br.com.lojajogos.model.Cliente</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver"

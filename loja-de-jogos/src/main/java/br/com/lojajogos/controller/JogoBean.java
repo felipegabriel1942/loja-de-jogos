@@ -39,13 +39,11 @@ public class JogoBean implements Serializable{
 	@PostConstruct
 	public void init() {
 		jogo = new Jogo();
-		listaJogos = listarJogosNaTela();
 	}
 	
 	public void salvarJogo() {
 		js.cadastrarJogo(jogo);
 		jogo = new Jogo();
-		listaJogos = listarJogosNaTela();
 		saveMessage();
 	}
 	
