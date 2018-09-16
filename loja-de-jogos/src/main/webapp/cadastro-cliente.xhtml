@@ -13,16 +13,20 @@
 			<p:growl id="mensagemSucesso" showDetail="true" sticky="true" />
 			<h:panelGrid columns="2" id="gridCadastro">
 
-				<f:facet name="header">Cadastro de Jogos</f:facet>
+				<f:facet name="header">Cadastro de Cliente</f:facet>
 
-				<p:outputLabel for="nomeJogo" value="Nome: " />
-				<p:inputText id="nomeJogo" value="#{jogoBean.jogo.nomeJogo}" required="true"/>
-				<p:outputLabel for="generoJogo" value="Genêro: " />
-				<p:inputText id="generoJogo" value="#{jogoBean.jogo.generoJogo}" required="true"/>
-				<p:outputLabel for="valorJogo" value="Valor: " />
-				<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}" required="true"/>
+				<p:outputLabel for="nomeCliente" value="Nome: " />
+				<p:inputText id="nomeCliente" value="#{clienteBean.cliente.nomeCliente}" required="true" size="50"/>
+				
+				<p:outputLabel for="nascimentoCliente" value="Data de Nascimento: " />
+				<p:calendar id="nascimentoCliente" value="#{clienteBean.cliente.dataDeNascimentoCliente}" required="true" size="5"/>
+				
+				
+				<p:outputLabel for="emailCliente" value="Email: " />
+				<p:inputText id="emailCliente" value="#{clienteBean.cliente.emailCliente}" required="true" size="30"/>
+				
 				<p:commandButton value="Gravar"
-					actionListener="#{jogoBean.salvarJogo}"
+					actionListener="#{clienteBean.salvarCliente()}"
 					update="gridCadastro mensagemSucesso" />
 			</h:panelGrid>
 		</h:form>

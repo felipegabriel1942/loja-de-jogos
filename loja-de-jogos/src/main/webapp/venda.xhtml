@@ -5,14 +5,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-	<p:menubar>
-		<p:submenu label="Administrador">
-			<p:menuitem value="Cadastro de Produtos" url="#"/>
-		
-		</p:submenu>
-		<p:submenu label="Vendas">
-			<p:menuitem value="Cadastro de Clientes" url="#"/>
-		
-		</p:submenu>
-	</p:menubar>
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form>
+
+			<!-- PAINEL DE CADASTRO -->
+			<p:growl id="mensagemSucesso" showDetail="true" sticky="true" />
+			<h:panelGrid columns="2" id="gridCadastro">
+
+				<f:facet name="header">Tela de Vendas</f:facet>
+
+				
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
 </html>
