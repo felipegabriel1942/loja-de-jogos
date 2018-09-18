@@ -45,4 +45,6 @@ public class ClienteBean implements Serializable {
 			MensagensUtil.mensagemErro("Erro ao cadastrar o cliente");
 		}
 	}
+	
+	
 }

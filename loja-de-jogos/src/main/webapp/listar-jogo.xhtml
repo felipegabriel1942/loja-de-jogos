@@ -1,0 +1,38 @@
+peito<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/templates/template.xhtml">
+	<ui:define name="conteudo">
+		<h:form style="margin-top: 20px;">
+			<p:dataTable value="#{jogoBean.listaJogos}" var="jogos">
+			<f:facet name="header">
+				Jogos Cadastrados
+			</f:facet>
+				<p:column>
+					<f:facet name="header">Titulo</f:facet>
+					<h:outputText value="#{jogos.nomeJogo}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Genêro</f:facet>
+					<h:outputText value="#{jogos.generoJogo}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Valor</f:facet>
+					<h:outputText value="#{jogos.valorJogo}" />
+				</p:column>
+				
+				<p:column>
+					<f:facet name="header">Hora de Cadastro</f:facet>
+					<h:outputText value="#{jogos.horaDeCadastro}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

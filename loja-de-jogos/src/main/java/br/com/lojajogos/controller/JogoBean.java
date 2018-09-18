@@ -1,6 +1,8 @@
 package br.com.lojajogos.controller;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -33,17 +35,25 @@ public class JogoBean implements Serializable {
 
 	@Getter
 	@Setter
+	private Date horaDoCadastro;
+
+	@Getter
+	@Setter
 	private List<Jogo> listaJogos;
 
 	@PostConstruct
 	public void init() {
 		jogo = new Jogo();
+		listaJogos = listarJogosNaTela();
 	}
 
 	public void salvarJogo() {
 		try {
+
+			jogo.setHoraDeCadastro(new Timestamp(horaDoCadastro.getTime()));
 			js.cadastrarJogo(jogo);
 			jogo = new Jogo();
+			horaDoCadastro = null;
 			MensagensUtil.mensagemSucesso("Jogo cadastrado com sucesso");
 		} catch (Exception e) {
 			MensagensUtil.mensagemErro("Erro ao cadastrar jogo");

@@ -21,6 +21,8 @@
 				<p:inputText id="generoJogo" value="#{jogoBean.jogo.generoJogo}" required="true"/>
 				<p:outputLabel for="valorJogo" value="Valor: " />
 				<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}" required="true"/>
+				<p:outputLabel for="horaCadastroJogo" value="Hora: " />
+				<p:calendar id="horaCadastroJogo" value="#{jogoBean.horaDoCadastro}" pattern="MM/dd/yyyy HH:mm"/>
 				<p:commandButton value="Gravar"
 					actionListener="#{jogoBean.salvarJogo}"
 					update="gridCadastro mensagemSucesso" />

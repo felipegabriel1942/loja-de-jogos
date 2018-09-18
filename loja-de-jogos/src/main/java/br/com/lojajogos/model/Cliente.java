@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -20,10 +19,10 @@ public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@SequenceGenerator(name = "clienteGenerator", sequenceName = "CLIENTE_SEQ", allocationSize = 1)
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "clienteGenerator")
-	@Column(name = "pk_jogo", nullable = false, columnDefinition = "serial")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "pk_cliente", nullable = false, columnDefinition = "serial")
 	@Getter
 	@Setter
 	private Long pkcliente;
@@ -72,4 +71,10 @@ public class Cliente implements Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return nomeCliente;
+	}
+	
+	
 }
