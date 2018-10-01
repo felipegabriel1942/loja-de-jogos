@@ -16,13 +16,21 @@
 				<f:facet name="header">Cadastro de Jogos</f:facet>
 
 				<p:outputLabel for="nomeJogo" value="Nome: " />
-				<p:inputText id="nomeJogo" value="#{jogoBean.jogo.nomeJogo}" required="true"/>
+				<p:inputText id="nomeJogo" value="#{jogoBean.jogo.nomeJogo}"
+					required="true" />
 				<p:outputLabel for="generoJogo" value="Genêro: " />
-				<p:inputText id="generoJogo" value="#{jogoBean.jogo.generoJogo}" required="true"/>
+				<p:selectOneMenu id="generoJogo" value="#{jogoBean.jogo.generoJogo}">
+					<f:selectItem itemLabel="Selecione um genêro" itemValue="" />
+					<f:selectItems value="#{jogoBean.listaGeneros}"
+						itemValue="#{g.nomeGenero}" var="g" itemLabel="#{g.nomeGenero}" />
+				</p:selectOneMenu>
+
 				<p:outputLabel for="valorJogo" value="Valor: " />
-				<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}" required="true"/>
+				<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}"
+					required="true" />
 				<p:outputLabel for="horaCadastroJogo" value="Hora: " />
-				<p:calendar id="horaCadastroJogo" value="#{jogoBean.horaDoCadastro}" pattern="MM/dd/yyyy HH:mm"/>
+				<p:calendar id="horaCadastroJogo" value="#{jogoBean.horaDoCadastro}"
+					pattern="MM/dd/yyyy HH:mm" />
 				<p:commandButton value="Gravar"
 					actionListener="#{jogoBean.salvarJogo}"
 					update="gridCadastro mensagemSucesso" />

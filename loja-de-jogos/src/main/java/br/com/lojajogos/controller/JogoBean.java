@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import org.omnifaces.cdi.ViewScoped;
 
+import br.com.lojajogos.model.Genero;
 import br.com.lojajogos.model.Jogo;
 import br.com.lojajogos.service.JogoService;
 import br.com.lojajogos.util.MensagensUtil;
@@ -40,11 +41,16 @@ public class JogoBean implements Serializable {
 	@Getter
 	@Setter
 	private List<Jogo> listaJogos;
+	
+	@Getter
+	@Setter
+	private List<Genero> listaGeneros;
 
 	@PostConstruct
 	public void init() {
 		jogo = new Jogo();
 		listaJogos = listarJogosNaTela();
+		listaGeneros = listarGenerosNaTela();
 	}
 
 	public void salvarJogo() {
@@ -63,6 +69,10 @@ public class JogoBean implements Serializable {
 
 	public List<Jogo> listarJogosNaTela() {
 		return js.listarJogos();
+	}
+	
+	public List<Genero> listarGenerosNaTela(){
+		return js.listarGeneros();
 	}
 
 }

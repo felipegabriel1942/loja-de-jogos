@@ -7,42 +7,32 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import br.com.lojajogos.model.Jogo;
+import br.com.lojajogos.model.Genero;
 import br.com.lojajogos.util.EntityManagerUtil;
 import lombok.Getter;
 import lombok.Setter;
 
-public class JogoRepository implements Serializable {
-
+public class GeneroRepository implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Inject
 	@Getter
 	@Setter
-	private Jogo jogo;
+	private Genero genero;
 	
-
 	@Getter
 	@Setter
-	private List<Jogo> jogos;
-
+	private List<Genero> listaDeGenero;
 	
-
-	public void salva(Jogo jogo) {
-		EntityManager em = EntityManagerUtil.getEntityManager();
-		em.getTransaction().begin();
-		em.persist(jogo);
-		em.getTransaction().commit();
-		
-	}
-
 	@SuppressWarnings("unchecked")
-	public List<Jogo> listar() {
+	public List<Genero> listarGeneros(){
 		EntityManager em = EntityManagerUtil.getEntityManager();
-		Query q = em.createQuery("select j from Jogo j", Jogo.class);
-
-		jogos = q.getResultList();
+		Query q = em.createQuery("select g from Genero g", Genero.class);
 		
-		return jogos;
+		listaDeGenero = q.getResultList();
+		
+		return listaDeGenero;
 	}
+
 }
