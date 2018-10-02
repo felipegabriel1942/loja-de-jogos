@@ -7,31 +7,64 @@
 	xmlns:p="http://primefaces.org/ui">
 <ui:composition template="/templates/template.xhtml">
 	<ui:define name="conteudo">
-		<h:form style="margin-top: 20px;">
-			<p:dataTable value="#{jogoBean.listaJogos}" var="jogos">
-			<f:facet name="header">
+		<h:form style="margin-top: 20px;" prependId="false">
+			<p:dataTable value="#{jogoBean.listaJogos}" var="jogos" selection="#{jogoBean.jogo}">
+				<f:facet name="header">
 				Jogos Cadastrados
 			</f:facet>
 				<p:column>
 					<f:facet name="header">Titulo</f:facet>
 					<h:outputText value="#{jogos.nomeJogo}" />
 				</p:column>
-				
+
 				<p:column>
 					<f:facet name="header">Genêro</f:facet>
 					<h:outputText value="#{jogos.generoJogo}" />
 				</p:column>
-				
+
 				<p:column>
 					<f:facet name="header">Valor</f:facet>
 					<h:outputText value="#{jogos.valorJogo}" />
 				</p:column>
-				
+
 				<p:column>
 					<f:facet name="header">Hora de Cadastro</f:facet>
 					<h:outputText value="#{jogos.horaDeCadastro}" />
 				</p:column>
+
+				<p:column>
+					<f:facet name="header">Editar</f:facet>
+					<p:commandButton value="Editar"
+						onclick="PF('edicaoProduto').show()"
+						update="nomeJogo generoJogo valorJogo horaCadastroJogo">
+						<f:setPropertyActionListener value="#{jogos}"
+							target="#{jogoBean.jogo}" />
+					</p:commandButton>
+				</p:column>
 			</p:dataTable>
+
+			<p:dialog header="Edição de produto" widgetVar="edicaoProduto"
+				modal="true" height="150">
+				<h:panelGrid columns="2">
+					<p:outputLabel for="nomeJogo" value="Nome: " />
+					<p:inputText id="nomeJogo" value="#{jogoBean.jogo.nomeJogo}"
+						required="true" />
+					<p:outputLabel for="generoJogo" value="Genêro: " />
+					<p:selectOneMenu id="generoJogo"
+						value="#{jogoBean.jogo.generoJogo}">
+						<f:selectItem itemLabel="Selecione um genêro" itemValue="" />
+						<f:selectItems value="#{jogoBean.listaGeneros}"
+							itemValue="#{g.nomeGenero}" var="g" itemLabel="#{g.nomeGenero}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="valorJogo" value="Valor: " />
+					<p:inputText id="valorJogo" value="#{jogoBean.jogo.valorJogo}"
+						required="true" />
+					<p:outputLabel for="horaCadastroJogo" value="Hora: " />
+					<p:calendar id="horaCadastroJogo"
+						value="#{jogoBean.horaDoCadastro}" pattern="MM/dd/yyyy HH:mm" />
+				</h:panelGrid>
+			</p:dialog>
 		</h:form>
 	</ui:define>
 </ui:composition>
